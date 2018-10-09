@@ -3,3 +3,4 @@ node_modules/
 wily-project/
 .vscode/
 .DS_Store
+package-lock.json
