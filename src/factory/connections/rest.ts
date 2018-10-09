@@ -1,5 +1,9 @@
 export = [
   {
+    from: require('../code/common/README'),
+    to: '/README.md'
+  },
+  {
     from: require('../code/common/package'),
     to: '/package.json'
   },
