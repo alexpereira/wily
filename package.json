@@ -1,0 +1,47 @@
+{
+  "name": "wily",
+  "version": "0.1.0",
+  "description": "Build a Node.js API from the command line",
+  "author": "Alex Pereira <alex.pereira@outlook.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/alexpereira/wily#readme",
+  "repository": "git://github.com/alexpereira/wily",
+  "bugs": {
+    "url": "https://github.com/alexpereira/wily/issues"
+  },
+  "keywords": [
+    "cli",
+    "tools"
+  ],
+  "engines": {
+    "node": ">= 0.8.x"
+  },
+  "files": [
+    "/bin",
+    "/lib"
+  ],
+  "bin": {
+    "wily": "./bin/wily"
+  },
+  "main": "./lib/index.js",
+  "oclif": {
+    "commands": "./lib/commands",
+    "bin": "wily",
+    "plugins": [
+      "@oclif/plugin-help"
+    ]
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@oclif/dev-cli": "^1.19.0",
+    "@oclif/test": "^1.2.1",
+    "@oclif/tslint": "^3.1.0",
+    "inquirer": "^6.2.0"
+  },
+  "devDependencies": {
+    "@types/inquirer": "0.0.43",
+    "typescript": "^3.1.1"
+  }
+}
