@@ -1,6 +1,6 @@
 export = `
 o---------COMMON {
-o---------COMMON   "name": "",
+o---PROJECT_NAME   "name": "{pn}",
 o---------COMMON   "version": "1.0.0",
 o---------COMMON   "description": "",
 o---------COMMON   "main": "index.js",
@@ -10,14 +10,12 @@ o---------COMMON   },
 o---------COMMON   "author": "",
 o---------COMMON   "license": "ISC",
 o---------COMMON   "dependencies": {
-o--------EXPRESS     "express": "^4.16.2",
-o-----------HAPI     "hapi": "^17.6.0",
-o---------COMMON     "": ""
+o--------EXPRESS     "express": "*",
+o-----------HAPI     "hapi": "*",
 o---------COMMON   },
 o---------COMMON   "devDependencies": {
-o-----------JEST     "jest": "^22.0.0",
-o----------MOCHA     "mocha": "^5.2.0",
-o---------COMMON     "": ""
+o-----------JEST     "jest": "*",
+o----------MOCHA     "mocha": "*",
 o---------COMMON   }
 o---------COMMON }
 `
