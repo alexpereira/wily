@@ -9,6 +9,7 @@ o---------COMMON     "test": "echo \\"Error: no test specified\\" && exit 1",
 o-----------KNEX     "migrate": "node_modules/.bin/knex migrate:latest --knexfile database/knexfile.js",
 o-----------KNEX     "rollback": "node_modules/.bin/knex migrate:rollback --knexfile database/knexfile.js",
 o-----------KNEX     "seed": "node_modules/.bin/knex seed:run --knexfile database/knexfile.js",
+o---------COMMON     "meeseeks": "echo \\"I\'m Mr. Meeseeks! Look at me!\\""
 o---------COMMON   },
 o---------COMMON   "author": "",
 o---------COMMON   "license": "ISC",
