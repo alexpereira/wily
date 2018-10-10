@@ -30,11 +30,18 @@ export default class Factory {
 
     const srcDirectory = `${projectDirectory}/src`
     const testsDirectory = `${projectDirectory}/tests`
+    const databaseDirectory = `${projectDirectory}/database`
 
     await mkdirSync(srcDirectory)
     await mkdirSync(testsDirectory)
+    await mkdirSync(`${databaseDirectory}`)
+    
+    await mkdirSync(`${databaseDirectory}/migrations`)
+    await mkdirSync(`${databaseDirectory}/seeds`)
+
     await mkdirSync(`${srcDirectory}/validation`)
     await mkdirSync(`${srcDirectory}/middleware`)
+    await mkdirSync(`${srcDirectory}/errors`)
     await mkdirSync(`${srcDirectory}/utils`)
 
     if (stack.server === 'rest') {
@@ -42,7 +49,8 @@ export default class Factory {
       await mkdirSync(`${srcDirectory}/models`)
       await mkdirSync(`${srcDirectory}/routes`)
     } else if (stack.server == 'graphql') {
-      await mkdirSync(`${srcDirectory}/middleware`)
+      await mkdirSync(`${srcDirectory}/modules`)
+      await mkdirSync(`${srcDirectory}/modules/user`)
       await mkdirSync(`${srcDirectory}/modules/user/mutations`)
       await mkdirSync(`${srcDirectory}/modules/user/queries`)
     }
