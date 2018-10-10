@@ -31,8 +31,15 @@ o---------COMMON     req.logout()
 o---------COMMON     res.status(200).send()
 o---------COMMON   }
 o---------COMMON 
-o---------COMMON   getUsers(req, res) {
-o---------COMMON     var users = new UserModel().getUsers()
+o---------COMMON   async getUsers(req, res) {
+o---------COMMON     var userModel = new UserModel()
+o---------COMMON     var users = []
+o---------COMMON     try {
+o---------COMMON       users = await userModel.getUsers()
+o---------COMMON     } catch (error) {
+o---------COMMON       res.status(error.status).send(error.message)
+o---------COMMON       return
+o---------COMMON     }
 o---------COMMON     res.status(200).send(users)
 o---------COMMON   }
 o---------COMMON 

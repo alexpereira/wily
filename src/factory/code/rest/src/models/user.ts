@@ -1,10 +1,22 @@
 export = `
 o---------COMMON var database = require('../utils/database')
+o---------COMMON var InternalError = require('../errors/InternalError')
 o---------COMMON 
 o---------COMMON class UserModel {
 o---------COMMON 
 o---------COMMON   constructor () {
 o---------COMMON 
+o---------COMMON   }
+o---------COMMON 
+o---------COMMON   async getUsers() {
+o---------COMMON     var users = []
+o---------COMMON     try {
+o-----------KNEX       users = await database.select().table('users')
+o---------COMMON     } catch (error) {
+o---------COMMON       console.error(error)
+o---------COMMON       throw new InternalError()
+o---------COMMON     }
+o---------COMMON     return users
 o---------COMMON   }
 o---------COMMON 
 o---------COMMON   getUser(username) {
