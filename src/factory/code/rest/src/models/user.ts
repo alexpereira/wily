@@ -44,4 +44,6 @@ o--------MONGODB     database.user.delete({ where: { username: username }})
 o----------MYSQL     database.query(\`DELETE FROM users WHERE username = \${username}\`)
 o---------COMMON   }
 o---------COMMON }
+o---------COMMON 
+o---------COMMON module.exports = UserModel
 `
