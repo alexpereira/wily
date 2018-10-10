@@ -16,6 +16,18 @@ export = [
     to: '/server.js'
   },
   {
+    from: require('../code/common/database/knexfile'),
+    to: '/database/knexfile.js'
+  },
+  {
+    from: require('../code/common/database/migrations/initial'),
+    to: `/database/migrations/${YYYYMMDDHHMMSS()}_initial.js`
+  },
+  {
+    from: require('../code/common/database/seeds/initial'),
+    to: `/database/seeds/initial.js`
+  },
+  {
     from: require('../code/common/src/app'),
     to: '/src/app.js'
   },
@@ -48,3 +60,22 @@ export = [
     to: '/src/errors/InternalError.js'
   }
 ]
+
+function YYYYMMDDHHMMSS() {
+  const date = new Date()
+
+  let YYYY = date.getFullYear()
+  let MM: any = (date.getMonth() + 1)
+  let DD: any = (date.getDay() + 1)
+  let hh: any = date.getHours()
+  let mm: any = date.getMinutes()
+  let ss: any = date.getSeconds()
+
+  if (MM < 10) MM = '0' + MM
+  if (DD < 10) DD = '0' + DD
+  if (hh < 10) hh = '0' + hh
+  if (mm < 10) mm = '0' + mm
+  if (ss < 10) ss = '0' + ss
+
+  return `${YYYY}${MM}${DD}${hh}${mm}${ss}`
+}
