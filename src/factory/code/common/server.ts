@@ -1,15 +1,17 @@
 export = `
+o---------COMMON require('dotenv').config()
 o---------COMMON var app = require('./src/app')
 o---------COMMON var database = require('./src/utils/database')
-o---------COMMON var logger = require('./src/utils/logger')
 o---------COMMON 
 o---------COMMON var PORT = process.env.PORT || 8080
-o---------COMMON var HOSTNAME = process.env.HOSTNAME || '0.0.0.0'
-o---------COMMON var SERVER_LISTENING_MESSAGE = \`Server listening on http://\${HOSTNAME}:\${PORT}/\`
+o---------COMMON var HOST = process.env.HOST || '0.0.0.0'
+o---------COMMON 
+o---------COMMON var SERVER_LISTENING_MESSAGE = \`Server listening on http://\${HOST}:\${PORT}/\`
+o---------COMMON var SERVER_SHUTDOWN_MESSAGE = \`Server stopped listening on http://\${HOST}:\${PORT}/\`
 o---------COMMON
-o---------COMMON // Launch server
-o--------EXPRESS var server = app.listen(PORT, HOSTNAME, () =>  logger.log(SERVER_LISTENING_MESSAGE))
-o-----------HAPI var server = app.server({ host: HOSTNAME, port: PORT })
+o---------COMMON // Start server
+o--------EXPRESS var server = app.listen(PORT, HOST, console.info(SERVER_LISTENING_MESSAGE))
+o-----------HAPI var server = app.server({ host: HOST, port: PORT })
 o---------COMMON
 o---------COMMON // Shutdown server gracefully
 o---------COMMON function handleExit(options, err) {
@@ -31,6 +33,8 @@ o---------COMMON     })
 o---------COMMON   }
 o---------COMMON   if (err) errors.report(err)
 o---------COMMON   if (options.exit) process.exit()
+o---------COMMON 
+o---------COMMON   console.info(SERVER_SHUTDOWN_MESSAGE)
 o---------COMMON }
 o---------COMMON 
 o---------COMMON process.on('exit', handleExit.bind(null, { cleanup: true }))
