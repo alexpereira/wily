@@ -33,14 +33,14 @@ export default class Factory {
 
     await mkdirSync(srcDirectory)
     await mkdirSync(testsDirectory)
+    await mkdirSync(`${srcDirectory}/validation`)
+    await mkdirSync(`${srcDirectory}/middleware`)
+    await mkdirSync(`${srcDirectory}/utils`)
 
     if (stack.server === 'rest') {
       await mkdirSync(`${srcDirectory}/controllers`)
-      await mkdirSync(`${srcDirectory}/middleware`)
       await mkdirSync(`${srcDirectory}/models`)
       await mkdirSync(`${srcDirectory}/routes`)
-      await mkdirSync(`${srcDirectory}/utils`)
-      await mkdirSync(`${srcDirectory}/validation`)
     } else if (stack.server == 'graphql') {
       await mkdirSync(`${srcDirectory}/middleware`)
       await mkdirSync(`${srcDirectory}/modules/user/mutations`)
