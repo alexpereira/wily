@@ -41,4 +41,6 @@ o---------COMMON process.on('exit', handleExit.bind(null, { cleanup: true }))
 o---------COMMON process.on('SIGINT', handleExit.bind(null, { exit: true }))
 o---------COMMON process.on('SIGTERM', handleExit.bind(null, { exit: true }))
 o---------COMMON process.on('uncaughtException', handleExit.bind(null, { exit: true }))
+o---------COMMON 
+o---------COMMON module.exports = server
 `
