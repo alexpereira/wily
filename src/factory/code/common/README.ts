@@ -3,6 +3,10 @@ o---PROJECT_NAME # {pn}
 o---------COMMON 
 o---------COMMON ## Getting Started
 o---------COMMON 
+o---------COMMON ## Prerequisites
+o---------COMMON 
+o---------COMMON Enter all environment variables in \`[project-path]/.env\` (This file is hidden by default)
+o---------COMMON 
 o---------COMMON ### Starting server
 o---------COMMON 
 o---------COMMON Install packages:
@@ -21,5 +25,6 @@ o---------COMMON \`npm test\`
 o---------COMMON 
 o---------COMMON ## Notes
 o---------COMMON 
-o---------COMMON \`npm update\` will install the latest versions of your stack packages and it can cause npm version conflicts.
+o---------COMMON * Do not share the contents of your \`.env\` file.
+o---------COMMON * \`npm update\` will install the latest versions of your stack packages and it can cause npm version conflicts.
 `
