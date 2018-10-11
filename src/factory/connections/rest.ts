@@ -16,6 +16,10 @@ export = [
     to: '/server.js'
   },
   {
+    from: require('../code/common/tests/routes/user'),
+    to: '/tests/routes/user.test.js'
+  },
+  {
     from: require('../code/common/database/knexfile'),
     to: '/database/knexfile.js'
   },
@@ -48,8 +52,8 @@ export = [
     to: '/src/validation/user.js'
   },
   {
-    from: require('../code/common/src/middleware/authentication'),
-    to: '/src/middleware/authentication.js'
+    from: require('../code/common/src/middleware/verifyUser'),
+    to: '/src/middleware/verifyUser.js'
   },
   {
     from: require('../code/common/src/utils/database'),
@@ -58,6 +62,14 @@ export = [
   {
     from: require('../code/common/src/errors/InternalError'),
     to: '/src/errors/InternalError.js'
+  },
+  {
+    from: require('../code/common/src/errors/BadRequest'),
+    to: '/src/errors/BadRequest.js'
+  },
+  {
+    from: require('../code/common/src/errors/Unauthorized'),
+    to: '/src/errors/Unauthorized.js'
   }
 ]
 
