@@ -35,7 +35,9 @@ export default class Factory {
     await mkdirSync(srcDirectory)
     await mkdirSync(testsDirectory)
     await mkdirSync(`${databaseDirectory}`)
-    
+
+    await mkdirSync(`${testsDirectory}/routes`)
+
     await mkdirSync(`${databaseDirectory}/migrations`)
     await mkdirSync(`${databaseDirectory}/seeds`)
 
