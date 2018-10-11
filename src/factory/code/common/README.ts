@@ -13,6 +13,9 @@ o---------COMMON # Server options
 o---------COMMON SERVER_HOST=localhost
 o---------COMMON SERVER_PORT=3000
 o---------COMMON 
+o---------COMMON # Authentication options
+o---------COMMON JWT_SECRET=teehee
+o---------COMMON 
 o---------COMMON # Database credentials
 o---------COMMON DATABASE_HOST=localhost
 o---------COMMON DATABASE_PORT=3306
