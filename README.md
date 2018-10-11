@@ -1,12 +1,14 @@
-# wily
+# wily [UNDER DEVELOPMENT]
 
 Build a Node.js API from the command line
 
+`npm install -g wily`
+
 ### 😎 Motivation
 
-Architecting the right stack for a Node.js API can be a difficult and prolonged task. **wily**'s main goal is to make it easier
+Architecting the right stack for a Node.js API can be a difficult and prolonged task. **wily** is here to make it easier
 
-{GIF GOES HERE}
+![wily gif](https://media.giphy.com/media/WS4y6MqzqEWcOLxJ88/giphy.gif)
 
 #### Built with
 
