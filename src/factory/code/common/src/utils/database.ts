@@ -1,7 +1,6 @@
 export = `
 o-----------KNEX var knex = require('knex')
 o-----------KNEX 
-o-----------KNEX // Pooling connections: https://www.npmjs.com/package/mysql#pooling-connections
 o-----------KNEX var database = knex({
 o-----------KNEX   client: 'mysql',
 o-----------KNEX   connection: {
