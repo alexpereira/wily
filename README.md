@@ -2,7 +2,7 @@
 
 Build a Node.js API from the command line
 
-## Motivation
+### 😎 Motivation
 
 Architecting the right stack for a Node.js API can be a difficult and prolonged task. **wily**'s main goal is to make it easier
 
@@ -12,9 +12,10 @@ Architecting the right stack for a Node.js API can be a difficult and prolonged 
 
 * [Typescript](https://www.npmjs.com/package/typescript)
 * [oclif](https://www.npmjs.com/package/oclif)
+* [Inquirer.js](https://www.npmjs.com/package/inquirer)
 
 
-## ✨ Supported Features 
+### ✨ Supported features 
 
 #### API architecture style & query language
 - [x] [REST](https://www.w3.org/2001/sw/wiki/REST)
@@ -53,6 +54,6 @@ Architecting the right stack for a Node.js API can be a difficult and prolonged 
 * [SuperTest](https://www.npmjs.com/package/supertest)
 
 
-### Other resources
+### 📚 Other resources
 
 * [The Ultimate Guide to API Architecture: REST, SOAP or GraphQL?](https://da-14.com/blog/ultimate-guide-api-architecture-rest-soap-or-graphql)
