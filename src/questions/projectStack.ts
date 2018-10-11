@@ -1,3 +1,5 @@
+import { ProjectStack } from '../types'
+
 export const projectStack = [
   {
     type: 'list',
@@ -11,7 +13,7 @@ export const projectStack = [
     name: 'framework',
     message: 'Type of framework: ',
     choices: ['express', 'hapi'],
-    default: 'express'
+    default: 'express',
   },
   {
     type: 'list',
@@ -24,15 +26,33 @@ export const projectStack = [
     type: 'list',
     name: 'orm',
     message: 'Type of ORM: ',
-    choices: ['knex', 'sequelize', 'mongoose', 'native'],
-    default: 'knex'
+    choices: ['knex', 'sequelize'],
+    default: 'knex',
+    when: (answers: ProjectStack) => answers.database == 'mysql'
+  },
+  {
+    type: 'list',
+    name: 'orm',
+    message: 'Type of ORM: ',
+    choices: ['mongoose', 'native mongodb'], // TODO: handle 'native mongodb'
+    default: 'mongoose',
+    when: (answers: ProjectStack) => answers.database == 'mongodb'
   },
   {
     type: 'list',
     name: 'auth',
     message: 'Type of authentication: ',
-    choices: ['jwt', 'session cookies'],
-    default: 'jwt'
+    choices: ['jwt', 'express-session'],
+    default: 'jwt',
+    when: (answers: ProjectStack) => answers.framework == 'express'
+  },
+  {
+    type: 'list',
+    name: 'auth',
+    message: 'Type of authentication: ',
+    choices: ['jwt', 'yar'],
+    default: 'jwt',
+    when: (answers: ProjectStack) => answers.framework == 'hapi'
   },
   {
     type: 'list',

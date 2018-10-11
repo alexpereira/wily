@@ -30,26 +30,36 @@ export default class Factory {
 
     const srcDirectory = `${projectDirectory}/src`
     const testsDirectory = `${projectDirectory}/tests`
+    const databaseDirectory = `${projectDirectory}/database`
 
     await mkdirSync(srcDirectory)
     await mkdirSync(testsDirectory)
+    await mkdirSync(`${databaseDirectory}`)
+
+    await mkdirSync(`${testsDirectory}/routes`)
+
+    await mkdirSync(`${databaseDirectory}/migrations`)
+    await mkdirSync(`${databaseDirectory}/seeds`)
+
+    await mkdirSync(`${srcDirectory}/validation`)
+    await mkdirSync(`${srcDirectory}/middleware`)
+    await mkdirSync(`${srcDirectory}/errors`)
+    await mkdirSync(`${srcDirectory}/utils`)
 
     if (stack.server === 'rest') {
       await mkdirSync(`${srcDirectory}/controllers`)
-      await mkdirSync(`${srcDirectory}/middleware`)
       await mkdirSync(`${srcDirectory}/models`)
       await mkdirSync(`${srcDirectory}/routes`)
-      await mkdirSync(`${srcDirectory}/utils`)
-      await mkdirSync(`${srcDirectory}/validation`)
     } else if (stack.server == 'graphql') {
-      await mkdirSync(`${srcDirectory}/middleware`)
+      await mkdirSync(`${srcDirectory}/modules`)
+      await mkdirSync(`${srcDirectory}/modules/user`)
       await mkdirSync(`${srcDirectory}/modules/user/mutations`)
       await mkdirSync(`${srcDirectory}/modules/user/queries`)
     }
   }
 
   async addProjectFiles() {
-    const { projectDirectory, stack} = this
+    const { projectDirectory, stack } = this
 
     let codePaths: Connection[] = []
     if (stack.server == 'rest') {
@@ -67,19 +77,27 @@ export default class Factory {
   }
 
   private cleanCode(code: string, stack: ProjectStack) {
+    const { name } = this.info
+
     const lines = code.split('\n')
     let stackArray = Object.values(stack).map( word => word.toLocaleUpperCase())
-    stackArray.unshift('COMMON')
+    stackArray.unshift('COMMON', 'PROJECT_NAME')
     
     let app: string[] = new Array()
     
     for (const line of lines) {
       const type = line.substring(0, 16).replace(/-|o/g, '')
+      let code = line.substring(17, line.length)
 
-      if (stackArray.includes(type)) {
-        const code = line.substring(17, line.length)
-        app.push(code)
+      if (!stackArray.includes(type)) {
+        continue
       }
+
+      if (type == 'PROJECT_NAME') {
+        code = code.replace(/{pn}/g, `${name}`)
+      }
+
+      app.push(code)
     }
 
     return app.join('\n')
