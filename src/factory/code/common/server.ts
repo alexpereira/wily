@@ -31,7 +31,7 @@ o---------COMMON         if (i === actions.length - 1) process.exit()
 o---------COMMON       }
 o---------COMMON     })
 o---------COMMON   }
-o---------COMMON   if (err) errors.report(err)
+o---------COMMON   
 o---------COMMON   if (options.exit) process.exit()
 o---------COMMON 
 o---------COMMON   console.info(SERVER_SHUTDOWN_MESSAGE)
