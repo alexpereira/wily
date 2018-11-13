@@ -34,7 +34,7 @@ export const projectStack = [
     type: 'list',
     name: 'orm',
     message: 'Type of ORM: ',
-    choices: ['mongoose', 'native mongodb'], // TODO: handle 'native mongodb'
+    choices: ['mongoose', 'native mongodb'],
     default: 'mongoose',
     when: (answers: ProjectStack) => answers.database == 'mongodb'
   },

@@ -6,8 +6,25 @@ o---------COMMON
 o---------COMMON var PORT = process.env.PORT || 8080
 o---------COMMON var HOST = process.env.HOST || '0.0.0.0'
 o---------COMMON 
-o---------COMMON var SERVER_LISTENING_MESSAGE = \`Server listening on http://\${HOST}:\${PORT}/\`
-o---------COMMON var SERVER_SHUTDOWN_MESSAGE = \`Server stopped listening on http://\${HOST}:\${PORT}/\`
+o---------COMMON var SERVER_LISTENING_MESSAGE = \`
+o---------COMMON Built with ♥ by Alex Pereira
+o---------COMMON Donate: paypal.me/alexpereira7 or venmo @alexpereira7
+o---------COMMON 
+o---------COMMON Server listening on http://\${HOST}:\${PORT}
+o---------COMMON 
+o-----------REST Routes:
+o-----------REST 
+o-----------REST   [GET]     /v1/ping
+o-----------REST   [POST]    /v1/login
+o-----------REST   [POST]    /v1/users
+o-----------REST   [GET]     /v1/users
+o-----------REST   [GET]     /v1/users/:username
+o-----------REST   [PUT]     /v1/users/:username
+o-----------REST   [PATCH]   /v1/users/:username
+o-----------REST   [DELETE]  /v1/users/:username
+o-----------REST 
+o---------COMMON \`
+o---------COMMON var SERVER_SHUTDOWN_MESSAGE = \`Server stopped listening on http://\${HOST}:\${PORT}\`
 o---------COMMON
 o---------COMMON // Start server
 o--------EXPRESS var server = app.listen(PORT, HOST, console.info(SERVER_LISTENING_MESSAGE))

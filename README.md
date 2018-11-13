@@ -12,7 +12,7 @@ Architecting the right stack for a Node.js API can be a difficult and prolonged 
 
 #### Built with
 
-* [Typescript](https://www.npmjs.com/package/typescript)
+* [TypeScript](https://www.npmjs.com/package/typescript)
 * [oclif](https://www.npmjs.com/package/oclif)
 * [Inquirer.js](https://www.npmjs.com/package/inquirer)
 

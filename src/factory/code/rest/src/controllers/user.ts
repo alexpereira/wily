@@ -15,33 +15,41 @@ o---------COMMON     this.updateUser = this.updateUser.bind(this)
 o---------COMMON     this.deleteUser = this.deleteUser.bind(this)
 o---------COMMON   }
 o---------COMMON 
-o---------COMMON   async registerUser(req, res) {
-o---------COMMON     var { body: user } = req
+o--------EXPRESS   async registerUser(req, res) {
+o-----------HAPI   async registerUser(request, h) {
+o--------EXPRESS     var { body: user } = req
+o-----------HAPI     var { body: user } = request
 o---------COMMON 
 o---------COMMON     try {
 o---------COMMON       userValidation.validateRegister(user)
 o---------COMMON     } catch (error) {
-o---------COMMON       res.status(error.status).send(error.message)
+o--------EXPRESS       res.status(error.status).send(error.message)
+o-----------HAPI       h.response(error.message).code(error.status)
 o---------COMMON       return
 o---------COMMON     }
 o---------COMMON 
 o---------COMMON     try {
 o---------COMMON       user = await this.userModel.insertUser(user)
 o---------COMMON     } catch (error) {
-o---------COMMON       res.status(error.status).send(error.message)
+o--------EXPRESS       res.status(error.status).send(error.message)
+o-----------HAPI       h.response(error.message).code(error.status)
 o---------COMMON       return
 o---------COMMON     }
 o---------COMMON 
-o---------COMMON     res.status(200).send(user)
+o--------EXPRESS     res.status(200).send(user)
+o-----------HAPI     h.response(user).code(200)
 o---------COMMON   }
 o---------COMMON 
-o---------COMMON   async loginUser(req, res) {
-o---------COMMON     var { body: user } = req
+o--------EXPRESS   async loginUser(req, res) {
+o-----------HAPI   async loginUser(request, h) {
+o--------EXPRESS     var { body: user } = req
+o-----------HAPI     var { body: user } = request
 o---------COMMON 
 o---------COMMON     try {
 o---------COMMON       userValidation.validateLogin(user)
 o---------COMMON     } catch (error) {
-o---------COMMON       res.status(error.status).send(error.message)
+o--------EXPRESS       res.status(error.status).send(error.message)
+o-----------HAPI       h.response(error.message).code(error.status)
 o---------COMMON       return
 o---------COMMON     }
 o---------COMMON 
@@ -49,32 +57,40 @@ o---------COMMON     var token = ''
 o---------COMMON     try {
 o---------COMMON       token = await this.userModel.authenticateUser(user)
 o---------COMMON     } catch (error) {
-o---------COMMON       res.status(error.status).send(error.message)
+o--------EXPRESS       res.status(error.status).send(error.message)
+o-----------HAPI       h.response(error.message).code(error.status)
 o---------COMMON       return
 o---------COMMON     }
 o---------COMMON 
-o---------COMMON     res.status(200).send({ token })
+o--------EXPRESS     res.status(200).send({ token })
+o-----------HAPI     h.send(responseken }).code(200)
 o---------COMMON   }
 o---------COMMON 
-o---------COMMON   async getUsers(req, res) {
+o--------EXPRESS   async getUsers(req, res) {
+o-----------HAPI   async getUsers(request, h) {
 o---------COMMON     var users = []
 o---------COMMON     try {
 o---------COMMON       users = await this.userModel.getUsers()
 o---------COMMON     } catch (error) {
-o---------COMMON       res.status(error.status).send(error.message)
+o--------EXPRESS       res.status(error.status).send(error.message)
+o-----------HAPI       h.response(error.message).code(error.status)
 o---------COMMON       return
 o---------COMMON     }
 o---------COMMON 
-o---------COMMON     res.status(200).send(users)
+o--------EXPRESS     res.status(200).send(users)
+o-----------HAPI     h.response(users).code(200)
 o---------COMMON   }
 o---------COMMON 
-o---------COMMON   async getUser(req, res) {
-o---------COMMON     var { username } = req.params
+o--------EXPRESS   async getUser(req, res) {
+o-----------HAPI   async getUser(request, h) {
+o--------EXPRESS     var { params: { username } } = req
+o-----------HAPI     var { params: { username } } = request
 o---------COMMON 
 o---------COMMON     try {
 o---------COMMON       userValidation.validateUsername(username)
 o---------COMMON     } catch (error) {
-o---------COMMON       res.status(error.status).send(error.message)
+o--------EXPRESS       res.status(error.status).send(error.message)
+o-----------HAPI       h.response(error.message).code(error.status)
 o---------COMMON       return
 o---------COMMON     }
 o---------COMMON 
@@ -82,20 +98,25 @@ o---------COMMON     var user = {}
 o---------COMMON     try {
 o---------COMMON       user = await this.userModel.getUser(username)
 o---------COMMON     } catch (error) {
-o---------COMMON       res.status(error.status).send(error.message)
+o--------EXPRESS       res.status(error.status).send(error.message)
+o-----------HAPI       h.response(error.message).code(error.status)
 o---------COMMON       return
 o---------COMMON     }
 o---------COMMON 
-o---------COMMON     res.status(200).send(user)
+o--------EXPRESS     res.status(200).send(user)
+o-----------HAPI     h.response(user).code(200)
 o---------COMMON   }
 o---------COMMON 
-o---------COMMON   async updateUser(req, res) {
-o---------COMMON     var { method, body: user, params: { username } } = req
+o--------EXPRESS   async updateUser(req, res) {
+o-----------HAPI   async updateUser(request, h) {
+o--------EXPRESS     var { method, body: user, params: { username } } = req
+o-----------HAPI     var { method, body: user, params: { username } } = request
 o---------COMMON 
 o---------COMMON     try {
 o---------COMMON       user = userValidation.validateUser(user)
 o---------COMMON     } catch (error) {
-o---------COMMON       res.status(error.status).send(error.message)
+o--------EXPRESS       res.status(error.status).send(error.message)
+o-----------HAPI       h.response(error.message).code(error.status)
 o---------COMMON       return
 o---------COMMON     }
 o---------COMMON 
@@ -110,31 +131,38 @@ o---------COMMON
 o---------COMMON     try {
 o---------COMMON       user = await this.userModel.updateUser(username, user)
 o---------COMMON     } catch (error) {
-o---------COMMON       res.status(error.status).send(error.message)
+o--------EXPRESS       res.status(error.status).send(error.message)
+o-----------HAPI       h.response(error.message).code(error.status)
 o---------COMMON       return
 o---------COMMON     }
 o---------COMMON 
-o---------COMMON     res.status(200).send(user)
+o--------EXPRESS     res.status(200).send(user)
+o-----------HAPI     h.response(user).code(200)
 o---------COMMON   }
 o---------COMMON 
-o---------COMMON   async deleteUser(req, res) {
-o---------COMMON     var { username } = req.params
+o--------EXPRESS   async deleteUser(req, res) {
+o-----------HAPI   async deleteUser(request, h) {
+o--------EXPRESS     var { params: { username } } = req
+o-----------HAPI     var { params: { username } } = request
 o---------COMMON 
 o---------COMMON     try {
 o---------COMMON       userValidation.validateUsername(username)
 o---------COMMON     } catch (error) {
-o---------COMMON       res.status(error.status).send(error.message)
+o--------EXPRESS       res.status(error.status).send(error.message)
+o-----------HAPI       h.response(error.message).code(error.status)
 o---------COMMON       return
 o---------COMMON     }
 o---------COMMON 
 o---------COMMON     try {
 o---------COMMON       await this.userModel.deleteUser(username)
 o---------COMMON     } catch (error) {
-o---------COMMON       res.status(error.status).send(error.message)
+o--------EXPRESS       res.status(error.status).send(error.message)
+o-----------HAPI       h.response(error.message).code(error.status)
 o---------COMMON       return
 o---------COMMON     }
 o---------COMMON 
-o---------COMMON     res.status(200).send({})
+o--------EXPRESS     res.status(200).send({})
+o-----------HAPI     h.response({}).code(200)
 o---------COMMON   }
 o---------COMMON }
 o---------COMMON 
