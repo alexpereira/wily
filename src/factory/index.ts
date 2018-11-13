@@ -37,6 +37,7 @@ export default class Factory {
     await mkdirSync(`${databaseDirectory}`)
 
     await mkdirSync(`${testsDirectory}/routes`)
+    await mkdirSync(`${testsDirectory}/routes/v1`)
 
     await mkdirSync(`${databaseDirectory}/migrations`)
     await mkdirSync(`${databaseDirectory}/seeds`)
@@ -50,6 +51,7 @@ export default class Factory {
       await mkdirSync(`${srcDirectory}/controllers`)
       await mkdirSync(`${srcDirectory}/models`)
       await mkdirSync(`${srcDirectory}/routes`)
+      await mkdirSync(`${srcDirectory}/routes/v1`)
     } else if (stack.server == 'graphql') {
       await mkdirSync(`${srcDirectory}/modules`)
       await mkdirSync(`${srcDirectory}/modules/user`)
@@ -80,11 +82,11 @@ export default class Factory {
     const { name } = this.info
 
     const lines = code.split('\n')
-    let stackArray = Object.values(stack).map( word => word.toLocaleUpperCase())
+    let stackArray = Object.values(stack).map(word => word.toLocaleUpperCase())
     stackArray.unshift('COMMON', 'PROJECT_NAME')
-    
+
     let app: string[] = new Array()
-    
+
     for (const line of lines) {
       const type = line.substring(0, 16).replace(/-|o/g, '')
       let code = line.substring(17, line.length)
@@ -103,7 +105,7 @@ export default class Factory {
     return app.join('\n')
   }
 
-  private handleAppendError (error: NodeJS.ErrnoException) {
+  private handleAppendError(error: NodeJS.ErrnoException) {
     if (error) {
       throw error
     }

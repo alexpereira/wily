@@ -29,6 +29,12 @@ o---------COMMON
 o---------COMMON Install packages:
 o---------COMMON \`npm update --save\`
 o---------COMMON 
+o---------COMMON Migrate database:
+o---------COMMON \`npm run migrate\`
+o---------COMMON 
+o---------COMMON Seed database:
+o---------COMMON \`npm run seed\`
+o---------COMMON 
 o---------COMMON Start server:
 o---------COMMON \`npm start\`
 o---------COMMON 

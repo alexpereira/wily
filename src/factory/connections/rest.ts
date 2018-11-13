@@ -1,4 +1,4 @@
-export = [
+export =[
   {
     from: require('../code/common/README'),
     to: '/README.md'
@@ -16,8 +16,8 @@ export = [
     to: '/server.js'
   },
   {
-    from: require('../code/common/tests/routes/user'),
-    to: '/tests/routes/user.test.js'
+    from: require('../code/common/tests/routes/v1/user'),
+    to: '/tests/routes/v1/user.test.js'
   },
   {
     from: require('../code/common/database/knexfile'),
@@ -44,8 +44,8 @@ export = [
     to: '/src/models/user.js'
   },
   {
-    from: require('../code/rest/src/routes/user'),
-    to: '/src/routes/user.js'
+    from: require('../code/rest/src/routes/v1/user'),
+    to: '/src/routes/v1/user.js'
   },
   {
     from: require('../code/common/src/validation/user'),
