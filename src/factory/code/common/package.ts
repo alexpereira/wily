@@ -27,7 +27,8 @@ o-----EX-SESSION     "express-session": "*",
 o------------YAR     "yar": "*",
 o------------JOI     "joi": "*",
 o------VALIDATOR     "validator": "*",
-o---------COMMON     "dotenv": "*"
+o---------COMMON     "dotenv": "*",
+o---------COMMON     "boom": "*"
 o---------COMMON   },
 o---------COMMON   "devDependencies": {
 o-----------JEST     "jest": "*",
