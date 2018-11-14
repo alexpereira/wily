@@ -25,7 +25,7 @@ Architecting the right stack for a Node.js API can be a difficult and prolonged 
 
 #### Frameworks
 - [x] [Express](https://www.npmjs.com/package/express) 
-- [ ] [hapi](https://www.npmjs.com/package/hapi)
+- [x] [hapi](https://www.npmjs.com/package/hapi)
 
 
 #### Databases
