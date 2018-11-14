@@ -1,6 +1,6 @@
 {
   "name": "wily",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Build a Node.js API from the command line",
   "author": "Alex Pereira <alex.pereira@outlook.com>",
   "license": "MIT",
