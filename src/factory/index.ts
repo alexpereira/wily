@@ -44,7 +44,6 @@ export default class Factory {
 
     await mkdirSync(`${srcDirectory}/validation`)
     await mkdirSync(`${srcDirectory}/middleware`)
-    await mkdirSync(`${srcDirectory}/errors`)
     await mkdirSync(`${srcDirectory}/utils`)
 
     if (stack.server === 'rest') {

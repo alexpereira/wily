@@ -58,18 +58,6 @@ export =[
   {
     from: require('../code/common/src/utils/database'),
     to: '/src/utils/database.js'
-  },
-  {
-    from: require('../code/common/src/errors/InternalError'),
-    to: '/src/errors/InternalError.js'
-  },
-  {
-    from: require('../code/common/src/errors/BadRequest'),
-    to: '/src/errors/BadRequest.js'
-  },
-  {
-    from: require('../code/common/src/errors/Unauthorized'),
-    to: '/src/errors/Unauthorized.js'
   }
 ]
 
