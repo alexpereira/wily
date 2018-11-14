@@ -1,7 +1,7 @@
 export = `
 o------------JOI var Joi = require('joi')
 o------VALIDATOR var validator = require('validator')
-o---------COMMON var BadRequest = require('../errors/BadRequest')
+o---------COMMON var Boom = require('boom')
 o---------COMMON 
 o---------COMMON function validateRegister(user) {
 o---------COMMON   try {
@@ -10,8 +10,7 @@ o------------JOI       username: Joi.string().required(),
 o------------JOI       password: Joi.string().required()
 o------------JOI     }))
 o---------COMMON   } catch (error) {
-o---------COMMON     console.error(error.details)
-o---------COMMON     throw new BadRequest()
+o---------COMMON     throw Boom.badRequest()
 o---------COMMON   }
 o---------COMMON }
 o---------COMMON 
@@ -22,8 +21,7 @@ o------------JOI       username: Joi.string().required(),
 o------------JOI       password: Joi.string().required()
 o------------JOI     }))
 o---------COMMON   } catch (error) {
-o---------COMMON     console.error(error.details)
-o---------COMMON     throw new BadRequest()
+o---------COMMON     throw Boom.badRequest()
 o---------COMMON   }
 o---------COMMON }
 o---------COMMON 
@@ -31,8 +29,7 @@ o---------COMMON function validateUsername(username) {
 o---------COMMON   try {
 o------------JOI     Joi.attempt(username, Joi.string())
 o---------COMMON   } catch (error) {
-o---------COMMON     console.error(error.details)
-o---------COMMON     throw new BadRequest()
+o---------COMMON     throw Boom.badRequest()
 o---------COMMON   }
 o---------COMMON }
 o---------COMMON 
@@ -43,8 +40,7 @@ o------------JOI       username: Joi.string().default(null),
 o------------JOI       password: Joi.string().default(null)
 o------------JOI     }), (_, value) => value)
 o---------COMMON   } catch (error) {
-o---------COMMON     console.error(error.details)
-o---------COMMON     throw new BadRequest()
+o---------COMMON     throw Boom.badRequest()
 o---------COMMON   }
 o---------COMMON   return user
 o---------COMMON }

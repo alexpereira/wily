@@ -18,67 +18,62 @@ o---------COMMON
 o--------EXPRESS   async registerUser(req, res) {
 o-----------HAPI   async registerUser(request, h) {
 o--------EXPRESS     var { body: user } = req
-o-----------HAPI     var { body: user } = request
+o-----------HAPI     var { payload: user } = request
 o---------COMMON 
 o---------COMMON     try {
 o---------COMMON       userValidation.validateRegister(user)
-o---------COMMON     } catch (error) {
-o--------EXPRESS       res.status(error.status).send(error.message)
-o-----------HAPI       h.response(error.message).code(error.status)
-o---------COMMON       return
+o---------COMMON     } catch ({ message, output: { statusCode } }) {
+o--------EXPRESS       return res.status(statusCode).send(message)
+o-----------HAPI       return h.response(message).code(statusCode)
 o---------COMMON     }
 o---------COMMON 
 o---------COMMON     try {
 o---------COMMON       user = await this.userModel.insertUser(user)
-o---------COMMON     } catch (error) {
-o--------EXPRESS       res.status(error.status).send(error.message)
-o-----------HAPI       h.response(error.message).code(error.status)
-o---------COMMON       return
+o---------COMMON     } catch ({ message, output: { statusCode } }) {
+o--------EXPRESS       return res.status(statusCode).send(message)
+o-----------HAPI       return h.response(message).code(statusCode)
 o---------COMMON     }
 o---------COMMON 
-o--------EXPRESS     res.status(200).send(user)
-o-----------HAPI     h.response(user).code(200)
+o--------EXPRESS     return res.status(200).send(user)
+o-----------HAPI     return h.response(user).code(200)
 o---------COMMON   }
 o---------COMMON 
 o--------EXPRESS   async loginUser(req, res) {
 o-----------HAPI   async loginUser(request, h) {
 o--------EXPRESS     var { body: user } = req
-o-----------HAPI     var { body: user } = request
+o-----------HAPI     var { payload: user } = request
 o---------COMMON 
 o---------COMMON     try {
 o---------COMMON       userValidation.validateLogin(user)
-o---------COMMON     } catch (error) {
-o--------EXPRESS       res.status(error.status).send(error.message)
-o-----------HAPI       h.response(error.message).code(error.status)
-o---------COMMON       return
+o---------COMMON     } catch ({ message, output: { statusCode } }) {
+o--------EXPRESS       return res.status(statusCode).send(message)
+o-----------HAPI       return h.response(message).code(statusCode)
 o---------COMMON     }
 o---------COMMON 
 o---------COMMON     var token = ''
 o---------COMMON     try {
 o---------COMMON       token = await this.userModel.authenticateUser(user)
-o---------COMMON     } catch (error) {
-o--------EXPRESS       res.status(error.status).send(error.message)
-o-----------HAPI       h.response(error.message).code(error.status)
-o---------COMMON       return
+o---------COMMON     } catch ({ message, output: { statusCode } }) {
+o--------EXPRESS       return res.status(statusCode).send(message)
+o-----------HAPI       return h.response(message).code(statusCode)
 o---------COMMON     }
 o---------COMMON 
-o--------EXPRESS     res.status(200).send({ token })
-o-----------HAPI     h.send(responseken }).code(200)
+o--------EXPRESS     return res.status(200).send({ token })
+o-----------HAPI     return h.response({ token }).code(200)
 o---------COMMON   }
 o---------COMMON 
-o--------EXPRESS   async getUsers(req, res) {
-o-----------HAPI   async getUsers(request, h) {
+o--------EXPRESS   async getUsers(_, res) {
+o-----------HAPI   async getUsers(_, h) {
 o---------COMMON     var users = []
 o---------COMMON     try {
 o---------COMMON       users = await this.userModel.getUsers()
-o---------COMMON     } catch (error) {
-o--------EXPRESS       res.status(error.status).send(error.message)
-o-----------HAPI       h.response(error.message).code(error.status)
-o---------COMMON       return
+o---------COMMON     } catch ({ message, output: { statusCode } }) {
+o--------EXPRESS       return res.status(statusCode).send(message)
+o-----------HAPI       return h.response(message).code(statusCode)
 o---------COMMON     }
 o---------COMMON 
-o--------EXPRESS     res.status(200).send(users)
-o-----------HAPI     h.response(users).code(200)
+o--------EXPRESS     return res.status(200).send(users)
+o-----------HAPI     return h.response(users).code(200)
 o---------COMMON   }
 o---------COMMON 
 o--------EXPRESS   async getUser(req, res) {
@@ -88,39 +83,36 @@ o-----------HAPI     var { params: { username } } = request
 o---------COMMON 
 o---------COMMON     try {
 o---------COMMON       userValidation.validateUsername(username)
-o---------COMMON     } catch (error) {
-o--------EXPRESS       res.status(error.status).send(error.message)
-o-----------HAPI       h.response(error.message).code(error.status)
-o---------COMMON       return
+o---------COMMON     } catch ({ message, output: { statusCode } }) {
+o--------EXPRESS       return res.status(statusCode).send(message)
+o-----------HAPI       return h.response(message).code(statusCode)
 o---------COMMON     }
 o---------COMMON 
 o---------COMMON     var user = {}
 o---------COMMON     try {
 o---------COMMON       user = await this.userModel.getUser(username)
-o---------COMMON     } catch (error) {
-o--------EXPRESS       res.status(error.status).send(error.message)
-o-----------HAPI       h.response(error.message).code(error.status)
-o---------COMMON       return
+o---------COMMON     } catch ({ message, output: { statusCode } }) {
+o--------EXPRESS       return res.status(statusCode).send(message)
+o-----------HAPI       return h.response(message).code(statusCode)
 o---------COMMON     }
 o---------COMMON 
-o--------EXPRESS     res.status(200).send(user)
-o-----------HAPI     h.response(user).code(200)
+o--------EXPRESS     return res.status(200).send(user)
+o-----------HAPI     return h.response(user).code(200)
 o---------COMMON   }
 o---------COMMON 
 o--------EXPRESS   async updateUser(req, res) {
 o-----------HAPI   async updateUser(request, h) {
 o--------EXPRESS     var { method, body: user, params: { username } } = req
-o-----------HAPI     var { method, body: user, params: { username } } = request
+o-----------HAPI     var { method, payload: user, params: { username } } = request
 o---------COMMON 
 o---------COMMON     try {
 o---------COMMON       user = userValidation.validateUser(user)
-o---------COMMON     } catch (error) {
-o--------EXPRESS       res.status(error.status).send(error.message)
-o-----------HAPI       h.response(error.message).code(error.status)
-o---------COMMON       return
+o---------COMMON     } catch ({ message, output: { statusCode } }) {
+o--------EXPRESS       return res.status(statusCode).send(message)
+o-----------HAPI       return h.response(message).code(statusCode)
 o---------COMMON     }
 o---------COMMON 
-o---------COMMON     if (method == 'PATCH') {
+o---------COMMON     if (method.toUpperCase() == 'PATCH') {
 o---------COMMON       for (var field in user) { 
 o---------COMMON         if (user[field] === null) {
 o---------COMMON           delete user[field]
@@ -130,14 +122,13 @@ o---------COMMON     }
 o---------COMMON 
 o---------COMMON     try {
 o---------COMMON       user = await this.userModel.updateUser(username, user)
-o---------COMMON     } catch (error) {
-o--------EXPRESS       res.status(error.status).send(error.message)
-o-----------HAPI       h.response(error.message).code(error.status)
-o---------COMMON       return
+o---------COMMON     } catch ({ message, output: { statusCode } }) {
+o--------EXPRESS       return res.status(statusCode).send(message)
+o-----------HAPI       return h.response(message).code(statusCode)
 o---------COMMON     }
 o---------COMMON 
-o--------EXPRESS     res.status(200).send(user)
-o-----------HAPI     h.response(user).code(200)
+o--------EXPRESS     return res.status(200).send(user)
+o-----------HAPI     return h.response(user).code(200)
 o---------COMMON   }
 o---------COMMON 
 o--------EXPRESS   async deleteUser(req, res) {
@@ -147,22 +138,20 @@ o-----------HAPI     var { params: { username } } = request
 o---------COMMON 
 o---------COMMON     try {
 o---------COMMON       userValidation.validateUsername(username)
-o---------COMMON     } catch (error) {
-o--------EXPRESS       res.status(error.status).send(error.message)
-o-----------HAPI       h.response(error.message).code(error.status)
-o---------COMMON       return
+o---------COMMON     } catch ({ message, output: { statusCode } }) {
+o--------EXPRESS       return res.status(statusCode).send(message)
+o-----------HAPI       return h.response(message).code(statusCode)
 o---------COMMON     }
 o---------COMMON 
 o---------COMMON     try {
 o---------COMMON       await this.userModel.deleteUser(username)
-o---------COMMON     } catch (error) {
-o--------EXPRESS       res.status(error.status).send(error.message)
-o-----------HAPI       h.response(error.message).code(error.status)
-o---------COMMON       return
+o---------COMMON     } catch ({ message, output: { statusCode } }) {
+o--------EXPRESS       return res.status(statusCode).send(message)
+o-----------HAPI       return h.response(message).code(statusCode)
 o---------COMMON     }
 o---------COMMON 
-o--------EXPRESS     res.status(200).send({})
-o-----------HAPI     h.response({}).code(200)
+o--------EXPRESS     return res.status(200).send({})
+o-----------HAPI     return h.response({}).code(200)
 o---------COMMON   }
 o---------COMMON }
 o---------COMMON 
