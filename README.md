@@ -11,10 +11,6 @@ Install **wily** globally: ``` npm install -g wily ```
 
 Once installed, a new API can be created by calling ```wily init```, like so:
 
-
-
-
-
 ![wily gif](https://media.giphy.com/media/WS4y6MqzqEWcOLxJ88/giphy.gif)
 
 ### ✨ Supported & ~~in-progress~~ Features

@@ -13,15 +13,15 @@ o---------COMMON # Server options
 o---------COMMON SERVER_HOST=localhost
 o---------COMMON SERVER_PORT=3000
 o---------COMMON 
-o---------COMMON # Authentication options
-o---------COMMON JWT_SECRET=teehee
-o---------COMMON 
-o---------COMMON # Database credentials
-o---------COMMON DATABASE_HOST=localhost
-o---------COMMON DATABASE_PORT=3306
-o---------COMMON DATABASE_NAME=top_secret
-o---------COMMON DATABASE_USER=admin
-o---------COMMON DATABASE_PASS=password
+o------------JWT # Authentication options
+o------------JWT JWT_SECRET=teehee
+o------------JWT 
+o----------MYSQL # Database credentials
+o----------MYSQL DATABASE_HOST=localhost
+o----------MYSQL DATABASE_PORT=3306
+o----------MYSQL DATABASE_NAME=top_secret
+o----------MYSQL DATABASE_USER=admin
+o----------MYSQL DATABASE_PASS=password
 o---------COMMON \`\`\`
 o---------COMMON 
 o---------COMMON ### Starting server
