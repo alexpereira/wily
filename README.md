@@ -37,3 +37,28 @@ Once installed, a new API can be created by calling ```wily init```, like so:
 [prs]: http://makeapullrequest.com
 [license-badge]: https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square
 [license]: https://github.com/visionmedia/supertest/blob/master/LICENSE
+
+## Development (Contribute!)
+
+If you're interested in contributing to this project, then THANK YOU! I appreciate your interest :) You can contribute to this project by working on any of the [open issues](https://github.com/alexpereira/wily/issues). You can also see which issues are not in progress on the [development](https://github.com/alexpereira/wily/projects/1) board.
+
+Lastly, I am here to help. Please reach out with any questions. I appreciate all contributions no matter how big or small.
+
+#### Getting Started
+
+- Fork & clone this project
+- Next, you will need to [Install TypeScript](https://www.typescriptlang.org/)
+- That's it! Now you can compile this project in watch-mode by running ```tsc -w```
+
+#### Testing your contributions*
+
+*I'm still working on unit tests so bear with me for a bit [ISSUE #15](https://github.com/alexpereira/wily/issues/15) (Sorry). In the meantime, I would suggest you test your changes by doing the following:
+
+- Create a temporary tests directory a level up from your copy of ./wily
+- Then, from your tests directory, create an ```alias test-wily=../wily/bin/wily```
+- Test your changes by running ```test-wily init```
+
+#### Susgested reads:
+
+- [Your first open source contribution: a step-by-step technical guide](https://medium.com/@jenweber/your-first-open-source-contribution-a-step-by-step-technical-guide-d3aca55cc5a6)
+- [Visual Studio Code TypeScript Development](https://code.visualstudio.com/docs/languages/typescript)
