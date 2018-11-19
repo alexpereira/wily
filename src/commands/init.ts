@@ -8,15 +8,46 @@ import { ProjectInfo, ProjectStack } from '../types'
 export default class Init extends Command {
   static description = 'all things begin somewhere'
 
+  static flags = {
+    stack: flags.string(),
+    path: flags.string()
+  }
+
   async run() {
 
-    const info: ProjectInfo = await prompt(projectInfo) as ProjectInfo
-    const stack: ProjectStack = await prompt(projectStack) as ProjectStack
+    const { flags: { stack: inlineStack, path = '.' } } = this.parse(Init)
 
-    const factory = new Factory(info, stack)
+    let info: ProjectInfo
+    let stack: ProjectStack
+    let factory
+
+    if (!inlineStack) {
+      info = await prompt(projectInfo) as ProjectInfo
+      stack = await prompt(projectStack) as ProjectStack
+      factory = new Factory(info, stack, path)
+    } else {
+
+      const inlineStackArray = inlineStack.split('-')
+
+      info = {
+        name: inlineStack
+      }
+
+      stack = {
+        server: inlineStackArray[0],
+        framework: inlineStackArray[1],
+        database: inlineStackArray[2],
+        orm: inlineStackArray[3],
+        auth: inlineStackArray[4],
+        validation: inlineStackArray[5],
+        test: inlineStackArray[6]
+      }
+    }
+
+    factory = new Factory(info, stack, path)
 
     try {
-      await factory.createProjectDirectory()
+      await factory.createProjectPath()
       await factory.createProjectArchitecture()
       await factory.addProjectFiles()
     } catch (error) {

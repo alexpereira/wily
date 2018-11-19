@@ -5,62 +5,70 @@ import { Connection } from './types'
 export default class Factory {
   private info: ProjectInfo
   private stack: ProjectStack
+  private path: string
 
-  constructor(info: ProjectInfo, stack: ProjectStack) {
+  constructor(info: ProjectInfo, stack: ProjectStack, path: string) {
     this.info = info
     this.stack = stack
+    
+    // Clean path
+    if (path[path.length - 1] == '/') {
+      path = path.slice(0, -1)
+    }
+
+    this.path = path
   }
 
-  projectDirectory: string = ''
+  projectPath: string = ''
 
-  async createProjectDirectory() {
+  async createProjectPath() {
     const { name } = this.info
-    const projectDirectory = `./${name}`
+    const projectPath = `${this.path}/${name}`
 
-    if (!existsSync(projectDirectory)) {
-      await mkdirSync(projectDirectory)
-      this.projectDirectory = projectDirectory
+    if (!existsSync(projectPath)) {
+      await mkdirSync(projectPath)
+      this.projectPath = projectPath
     } else {
       throw new Error(`${name} already exists`)
     }
   }
 
   async createProjectArchitecture() {
-    const { stack, projectDirectory } = this
+    const { stack, projectPath } = this
 
-    const srcDirectory = `${projectDirectory}/src`
-    const testsDirectory = `${projectDirectory}/tests`
-    const databaseDirectory = `${projectDirectory}/database`
+    const srcPath = `${projectPath}/src`
+    const testsPath = `${projectPath}/tests`
+    const databasePath = `${projectPath}/database`
 
-    await mkdirSync(srcDirectory)
-    await mkdirSync(testsDirectory)
-    await mkdirSync(`${databaseDirectory}`)
+    await mkdirSync(srcPath)
+    await mkdirSync(testsPath)
+    await mkdirSync(`${databasePath}`)
 
-    await mkdirSync(`${testsDirectory}/routes`)
-    await mkdirSync(`${testsDirectory}/routes/v1`)
+    await mkdirSync(`${testsPath}/routes`)
+    await mkdirSync(`${testsPath}/routes/v1`)
 
-    await mkdirSync(`${databaseDirectory}/migrations`)
-    await mkdirSync(`${databaseDirectory}/seeds`)
+    await mkdirSync(`${databasePath}/migrations`)
+    await mkdirSync(`${databasePath}/seeds`)
 
-    await mkdirSync(`${srcDirectory}/validation`)
-    await mkdirSync(`${srcDirectory}/middleware`)
-    await mkdirSync(`${srcDirectory}/utils`)
+    await mkdirSync(`${srcPath}/validation`)
+    await mkdirSync(`${srcPath}/middleware`)
+    await mkdirSync(`${srcPath}/utils`)
 
     if (stack.server === 'rest') {
-      await mkdirSync(`${srcDirectory}/controllers`)
-      await mkdirSync(`${srcDirectory}/models`)
-      await mkdirSync(`${srcDirectory}/routes`)
-      await mkdirSync(`${srcDirectory}/routes/v1`)
+      await mkdirSync(`${srcPath}/controllers`)
+      await mkdirSync(`${srcPath}/models`)
+      await mkdirSync(`${srcPath}/routes`)
+      await mkdirSync(`${srcPath}/routes/v1`)
     } else if (stack.server == 'graphql') {
-      await mkdirSync(`${srcDirectory}/modules`)
-      await mkdirSync(`${srcDirectory}/modules/user`)
-      await mkdirSync(`${srcDirectory}/modules/user/mutations`)
-      await mkdirSync(`${srcDirectory}/modules/user/queries`)
+      await mkdirSync(`${srcPath}/modules`)
+      await mkdirSync(`${srcPath}/modules/user`)
+      await mkdirSync(`${srcPath}/modules/user/mutations`)
+      await mkdirSync(`${srcPath}/modules/user/queries`)
     }
   }
 
   async addProjectFiles() {
-    const { projectDirectory, stack } = this
+    const { projectPath, stack } = this
 
     let codePaths: Connection[] = []
     if (stack.server == 'rest') {
@@ -71,7 +79,7 @@ export default class Factory {
 
     for (const codePath of codePaths) {
       const cleanCode = this.cleanCode(codePath.from, stack)
-      const destination = `${projectDirectory}${codePath.to}`
+      const destination = `${projectPath}${codePath.to}`
 
       await appendFile(destination, cleanCode, this.handleAppendError)
     }
