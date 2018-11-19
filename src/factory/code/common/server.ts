@@ -31,36 +31,38 @@ o---------COMMON
 o---------COMMON // Start server
 o--------EXPRESS var server = app.listen(PORT, HOST, console.info(SERVER_LISTENING_MESSAGE))
 o-----------HAPI app.start(console.info(SERVER_LISTENING_MESSAGE))
-o---------COMMON
+o---------COMMON 
 o---------COMMON // Shutdown server gracefully
-o---------COMMON function handleExit(options, err) {
-o---------COMMON   if (options.cleanup) {
-o---------COMMON     var actions = [
-o--------EXPRESS       server.close,
-o-----------HAPI       app.stop,
-o---------COMMON       database.destroy
-o---------COMMON     ]
-o---------COMMON     actions.forEach((close, i) => {
-o---------COMMON       try {
-o---------COMMON         close(() => {
-o---------COMMON           if (i === actions.length - 1) process.exit()
-o---------COMMON         })
-o---------COMMON       } catch (err) {
-o---------COMMON         if (i === actions.length - 1) process.exit()
-o---------COMMON       }
-o---------COMMON     })
+o---------COMMON async function shutdown(options) {
+o---------COMMON   
+o---------COMMON   var actions = [
+o----------MYSQL     database.destroy(),
+o--------EXPRESS     server.close(),
+o-----------HAPI     app.stop(),
+o---------COMMON   ]
+o---------COMMON 
+o---------COMMON   try {
+o---------COMMON     if (options.cleanup) {
+o---------COMMON       await Promise.all(actions)
+o---------COMMON     }
+o---------COMMON   } catch (error) {
+o---------COMMON     console.error('error: ', error)
 o---------COMMON   }
 o---------COMMON   
-o---------COMMON   if (options.exit) process.exit()
-o---------COMMON 
+o---------COMMON   if (options.exit) {
+o---------COMMON     process.exit()
+o---------COMMON   }
+o---------COMMON   
 o---------COMMON   console.info(SERVER_SHUTDOWN_MESSAGE)
 o---------COMMON }
 o---------COMMON 
-o---------COMMON process.on('exit', handleExit.bind(null, { cleanup: true }))
-o---------COMMON process.on('SIGINT', handleExit.bind(null, { exit: true }))
-o---------COMMON process.on('SIGTERM', handleExit.bind(null, { exit: true }))
-o---------COMMON process.on('uncaughtException', handleExit.bind(null, { exit: true }))
+o---------COMMON process.on('exit', shutdown.bind(null), { cleanup: true })
+o---------COMMON process.on('SIGINT', shutdown.bind(null), { exit: true })
+o---------COMMON process.on('SIGTERM', shutdown.bind(null), { exit: true })
+o---------COMMON process.on('uncaughtException', shutdown.bind(null), { exit: true })
+o---------COMMON 
 o---------COMMON 
 o--------EXPRESS module.exports = server
 o-----------HAPI module.exports = app
+o---------COMMON module.exports.shutdown = shutdown
 `

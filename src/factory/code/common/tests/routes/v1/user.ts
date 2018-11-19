@@ -111,10 +111,9 @@ o---------COMMON       .send({ username: 'test', password: false })
 o---------COMMON       .expect(400, done)
 o---------COMMON   })
 o---------COMMON 
-o----------MOCHA   after(function (done) {
-o-----------JEST   afterAll(function (done) {
-o--------EXPRESS     server.close(done())
-o-----------HAPI     server.stop().then(done)
+o----------MOCHA   after(async function () {
+o-----------JEST   afterAll(async function () {
+o---------COMMON     await server.shutdown({ cleanup: true })
 o---------COMMON   })
 o---------COMMON })
 o---------COMMON `

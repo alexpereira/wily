@@ -32,7 +32,7 @@
     ]
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/.bin/mocha --require ts-node/register ./tests/**/*.test.ts"
   },
   "dependencies": {
     "@oclif/dev-cli": "^1.19.0",
@@ -42,6 +42,10 @@
   },
   "devDependencies": {
     "@types/inquirer": "0.0.43",
+    "@types/mocha": "^5.2.5",
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0",
+    "ts-node": "^7.0.1",
     "typescript": "^3.1.1"
   }
 }

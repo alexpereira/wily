@@ -3,3 +3,5 @@ node_modules/
 wily-project/
 .vscode/
 .DS_Store
+
+tests/apis/.env

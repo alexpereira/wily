@@ -8,7 +8,7 @@ o---------COMMON   "scripts": {
 o-----------KNEX     "migrate": "node_modules/.bin/knex migrate:latest --knexfile database/knexfile.js",
 o-----------KNEX     "rollback": "node_modules/.bin/knex migrate:rollback --knexfile database/knexfile.js",
 o-----------KNEX     "seed": "node_modules/.bin/knex seed:run --knexfile database/knexfile.js",
-o----------MOCHA     "test": "node_modules/.bin/mocha tests --timeout 5000 --recursive --exit",
+o----------MOCHA     "test": "node_modules/.bin/mocha tests --timeout 5000 --recursive",
 o-----------JEST     "test": "node_modules/.bin/jest",
 o---------COMMON     "meeseeks": "echo \\"I\'m Mr. Meeseeks! Look at me!\\""
 o---------COMMON   },

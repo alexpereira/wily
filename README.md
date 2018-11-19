@@ -50,13 +50,13 @@ Lastly, I am here to help. Please reach out with any questions. I appreciate all
 - Next, you will need to [Install TypeScript](https://www.typescriptlang.org/)
 - That's it! Now you can compile this project in watch-mode by running ```tsc -w```
 
-#### Testing your contributions*
+#### Testing your contributions
 
-*I'm still working on unit tests so bear with me for a bit [ISSUE #15](https://github.com/alexpereira/wily/issues/15) (Sorry). In the meantime, I would suggest you test your changes by doing the following:
+- Run ```cp tests/apis/.env.sample tests/apis/.env``` to create a copy of the dotenv sample file for tests
+- Fill out the newly created dotenv file with your own values & credentials (e.g. database hosts, users and passwords)
+- Run ```npm test```
 
-- Create a temporary tests directory a level up from your copy of ./wily
-- Then, from your tests directory, create an ```alias test-wily=../wily/bin/wily```
-- Test your changes by running ```test-wily init```
+NOTE: Do not modify ```tests/apis/.env.sample``` as it can expose your personal credentials if you include it in your commits
 
 #### Susgested reads:
 
