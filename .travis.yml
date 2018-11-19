@@ -1,0 +1,23 @@
+language: node_js
+node_js:
+  - "node"
+services:
+  - mysql
+before_install:
+  - mysql -u root --password="" < tests/travis.sql
+env:
+  - JWT_SECRET=yolo
+  - DATABASE_HOST=localhost
+  - DATABASE_PORT=3306
+  - DATABASE_NAME=wily
+  - DATABASE_USER=wily
+  - DATABASE_PASS=wily
+before_script:
+  - npm install
+  - npm run build
+script:
+  - npm test
+cache:
+  directories:
+    - "node_modules"
+    - "tests/apis/node_modules"
