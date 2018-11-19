@@ -1,5 +1,6 @@
 # wily
 
+[![Build Status][travis-badge]][travis]
 [![PRs Welcome][prs-badge]][prs]
 [![MIT License][license-badge]][license]
 
@@ -32,11 +33,12 @@ Once installed, a new API can be created by calling ```wily init```, like so:
 * [oclif](https://www.npmjs.com/package/oclif)
 * [Inquirer.js](https://www.npmjs.com/package/inquirer)
 
-
+[travis-badge]: https://travis-ci.com/alexpereira/wily.svg?branch=master
+[travis]: https://travis-ci.com/alexpereira/wily
 [prs-badge]: https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square
 [prs]: http://makeapullrequest.com
 [license-badge]: https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square
-[license]: https://github.com/visionmedia/supertest/blob/master/LICENSE
+[license]: https://github.com/alexpereira/wily/blob/master/LICENSE
 
 ## Development (Contribute!)
 
