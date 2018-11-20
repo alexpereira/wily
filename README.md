@@ -1,5 +1,7 @@
 # wily
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/99ec3315135344859ba212480b3c6d6e)](https://app.codacy.com/app/alex.pereira/wily?utm_source=github.com&utm_medium=referral&utm_content=alexpereira/wily&utm_campaign=Badge_Grade_Dashboard)
+
 [![Build Status][travis-badge]][travis]
 [![PRs Welcome][prs-badge]][prs]
 [![MIT License][license-badge]][license]
