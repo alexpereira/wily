@@ -60,7 +60,7 @@ Lastly, I am here to help. Please reach out with any questions. I appreciate all
 
 NOTE: Do not modify ```tests/apis/.env.sample``` as it can expose your personal credentials if you include it in your commits
 
-#### Susgested reads:
+#### Suggested reads:
 
 - [Your first open source contribution: a step-by-step technical guide](https://medium.com/@jenweber/your-first-open-source-contribution-a-step-by-step-technical-guide-d3aca55cc5a6)
 - [Visual Studio Code TypeScript Development](https://code.visualstudio.com/docs/languages/typescript)
