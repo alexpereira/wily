@@ -46,6 +46,8 @@ If you're interested in contributing to this project, then THANK YOU! I apprecia
 
 Lastly, I am here to help. Please reach out with any questions. I appreciate all contributions no matter how big or small.
 
+Discord server: https://discord.gg/Dze88Pe
+
 #### Getting Started
 
 - Fork & clone this project
