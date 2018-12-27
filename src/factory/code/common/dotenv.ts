@@ -1,7 +1,8 @@
 export = `
 o---------COMMON # Server options
-o---------COMMON SERVER_HOST=
-o---------COMMON SERVER_PORT=
+o---------COMMON SERVER_HOST=localhost
+o---------COMMON SERVER_PORT=3000
+o---------COMMON DEBUG=false
 o---------COMMON 
 o---------COMMON # Authentication options
 o------------JWT JWT_SECRET=
