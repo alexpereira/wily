@@ -5,17 +5,21 @@ o---------COMMON
 o--------EXPRESS module.exports = function(req, res, next) {
 o-----------HAPI module.exports = function(request, h) {
 o-----------HAPI   var { raw: { req } } = request
-o------------JWT   var { headers: { authorization: token } } = req
+o------------JWT   var { headers: { authorization: token = 'Bear ' } } = req
 o---------COMMON 
 o---------COMMON   var user = {}
 o---------COMMON   try {
-o------------JWT     if (!token) {
-o------------JWT       throw Boom.unauthorized()
-o------------JWT     }
 o------------JWT     user = jwt.verify(token.split(' ')[1], process.env.JWT_SECRET)
-o--------EXPRESS   } catch ({ message, output: { statusCode } }) {
+o---------COMMON   } catch (error) {
+o---------COMMON     process.env.DEBUG === 'true' && (console.error(error))
+o---------COMMON   }
+o---------COMMON   
+o---------COMMON   try {
+o---------COMMON     if (Object.keys(user).length === 0) {
+o---------COMMON       throw Boom.unauthorized()
+o---------COMMON     }
+o---------COMMON   } catch ({ message, output: { statusCode } }) {
 o--------EXPRESS     return res.status(statusCode).send(message)
-o-----------HAPI   } catch (error) {
 o-----------HAPI     return h.unauthenticated(Boom.unauthorized())
 o---------COMMON   }
 o---------COMMON 
