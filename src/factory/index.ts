@@ -12,7 +12,7 @@ export default class Factory {
     this.stack = stack
     
     // Clean path
-    if (path[path.length - 1] == '/') {
+    if (path[path.length - 1] === '/') {
       path = path.slice(0, -1)
     }
 
@@ -59,7 +59,7 @@ export default class Factory {
       await mkdirSync(`${srcPath}/models`)
       await mkdirSync(`${srcPath}/routes`)
       await mkdirSync(`${srcPath}/routes/v1`)
-    } else if (stack.server == 'graphql') {
+    } else if (stack.server === 'graphql') {
       await mkdirSync(`${srcPath}/modules`)
       await mkdirSync(`${srcPath}/modules/user`)
       await mkdirSync(`${srcPath}/modules/user/mutations`)
@@ -71,9 +71,9 @@ export default class Factory {
     const { projectPath, stack } = this
 
     let codePaths: Connection[] = []
-    if (stack.server == 'rest') {
+    if (stack.server === 'rest') {
       codePaths = require('./connections/rest')
-    } else if (stack.server == 'graphql') {
+    } else if (stack.server === 'graphql') {
       codePaths = require('./connections/graphql')
     }
 
@@ -102,7 +102,7 @@ export default class Factory {
         continue
       }
 
-      if (type == 'PROJECT_NAME') {
+      if (type === 'PROJECT_NAME') {
         code = code.replace(/{pn}/g, `${name}`)
       }
 
