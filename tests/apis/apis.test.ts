@@ -8,6 +8,7 @@ const packages = [
   'express',
   'hapi',
   'mysql',
+  'mysql2',
   'mongodb',
   'knex',
   'sequelize',
@@ -30,6 +31,10 @@ const combinations = [
   'rest-express-mysql-knex-jwt-joi-jest',
   'rest-hapi-mysql-knex-jwt-joi-mocha',
   'rest-hapi-mysql-knex-jwt-joi-jest',
+  'rest-express-mysql-sequelize-jwt-joi-mocha',
+  'rest-express-mysql-sequelize-jwt-joi-jest',
+  'rest-hapi-mysql-sequelize-jwt-joi-mocha',
+  'rest-hapi-mysql-sequelize-jwt-joi-jest',
 ]
 
 describe('Testing API Combinations...', async () => {
@@ -62,7 +67,7 @@ describe('Testing API Combinations...', async () => {
       const testFramework = combination.split('-')[6]
       let testParams = ''
 
-      if (testFramework == 'mocha') {
+      if (testFramework === 'mocha') {
         testParams = '--recursive --exit'
       }
 
@@ -77,7 +82,7 @@ describe('Testing API Combinations...', async () => {
       try {
         await exec(`./node_modules/.bin/${testFramework} ./${combination}/tests ${testParams}`)  
       } catch (error) {
-        console.error(`Combination tests error: ${error}`)
+        console.error(`Combination test error: ${error}`)
         pass = false
       }
       
