@@ -1,11 +1,13 @@
 export = `
 o---------COMMON var UserModel = require('../models/user')
+o------SEQUELIZE var database = require('../utils/database')
 o---------COMMON var userValidation = require('../validation/user')
 o---------COMMON 
 o---------COMMON class UserController {
 o---------COMMON 
 o---------COMMON   constructor() {
-o---------COMMON     this.userModel = new UserModel()
+o-----------KNEX     this.userModel = new UserModel()
+o------SEQUELIZE     this.userModel = UserModel.init(database)
 o---------COMMON 
 o---------COMMON     this.registerUser = this.registerUser.bind(this)
 o---------COMMON     this.loginUser = this.loginUser.bind(this)
@@ -112,7 +114,7 @@ o--------EXPRESS       return res.status(statusCode).send(message)
 o-----------HAPI       return h.response(message).code(statusCode)
 o---------COMMON     }
 o---------COMMON 
-o---------COMMON     if (method.toUpperCase() == 'PATCH') {
+o---------COMMON     if (method.toUpperCase() === 'PATCH') {
 o---------COMMON       for (var field in user) { 
 o---------COMMON         if (user[field] === null) {
 o---------COMMON           delete user[field]

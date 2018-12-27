@@ -26,9 +26,9 @@ export const projectStack = [
     type: 'list',
     name: 'orm',
     message: 'ORM: ',
-    choices: ['knex', /*'sequelize'*/],
+    choices: ['knex', 'sequelize'],
     default: 'knex',
-    when: (answers: ProjectStack) => answers.database == 'mysql'
+    when: (answers: ProjectStack) => answers.database === 'mysql'
   },
   /*{
     type: 'list',
@@ -36,7 +36,7 @@ export const projectStack = [
     message: 'ODM: ',
     choices: ['mongoose', 'native-mongodb'],
     default: 'mongoose',
-    when: (answers: ProjectStack) => answers.database == 'mongodb'
+    when: (answers: ProjectStack) => answers.database === 'mongodb'
   },*/
   {
     type: 'list',
@@ -44,7 +44,7 @@ export const projectStack = [
     message: 'Authentication: ',
     choices: ['jwt', /*'express-session'*/],
     default: 'jwt',
-    when: (answers: ProjectStack) => answers.framework == 'express'
+    when: (answers: ProjectStack) => answers.framework === 'express'
   },
   {
     type: 'list',
@@ -52,7 +52,7 @@ export const projectStack = [
     message: 'Authentication: ',
     choices: ['jwt', /*'yar'*/],
     default: 'jwt',
-    when: (answers: ProjectStack) => answers.framework == 'hapi'
+    when: (answers: ProjectStack) => answers.framework === 'hapi'
   },
   {
     type: 'list',
