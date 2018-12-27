@@ -113,7 +113,7 @@ o---------COMMON   })
 o---------COMMON 
 o----------MOCHA   after(async function () {
 o-----------JEST   afterAll(async function () {
-o---------COMMON     await server.shutdown({ cleanup: true })
+o---------COMMON     await server.shutdown({ exit: true })
 o---------COMMON   })
 o---------COMMON })
 o---------COMMON `

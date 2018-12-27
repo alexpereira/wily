@@ -20,8 +20,8 @@ export =[
     to: '/tests/routes/v1/user.test.js'
   },
   {
-    from: require('../code/common/database/knexfile'),
-    to: '/database/knexfile.js'
+    from: require('../code/common/database/config'),
+    to: '/database/config.js'
   },
   {
     from: require('../code/common/database/migrations/initial'),
