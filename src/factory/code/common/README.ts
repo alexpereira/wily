@@ -12,6 +12,7 @@ o---------COMMON \`\`\`
 o---------COMMON # Server options
 o---------COMMON SERVER_HOST=localhost
 o---------COMMON SERVER_PORT=3000
+o---------COMMON DEBUG=true
 o---------COMMON 
 o------------JWT # Authentication options
 o------------JWT JWT_SECRET=teehee
