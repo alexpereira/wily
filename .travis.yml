@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - "node"
+  - node
 services:
   - mysql
 before_install:
@@ -20,5 +20,14 @@ script:
   - npm test
 cache:
   directories:
-    - "node_modules"
-    - "tests/apis/node_modules"
+  - node_modules
+  - tests/apis/node_modules
+deploy:
+  provider: npm
+  email: alex.pereira@outlook.com
+  api_key:
+    secure: i1CePXL2lUGv8cEo+Z4+BfJSisbbFBZgo0+/VQSMs7sNuh6kwjDYh2KvtreNqmENi5IX0pCz1bpxOP+bMywqB9/KF3QYPQQ/zelofX3s5W4TzYtGZTaUWkqJ7Me0I9dpz6cDxOPDL+X3nvovUtaoZSefCfv93gpVH70+O6k3aEzcvHclLPO3+l/QUOG4IYhPmzpHl9ninqZko94X0AOFNgELByBOt6hjFhtc2S7g2Kd6B3XIbGu1dG6mL5B2l3p66X8WfsYPFhlhrt85EIhlSCsWnegzmTVcv8jGP3IAL74tCaQUTtvJKsrXMWcxCcb3pj+iN1ROoMUWQHxXG+ceDNfDq66bTxVWD/WhBxxHidXiwOCpouZ4AOMYbT6nPppyJBOghTvu4iAVXe2so12FZFRTBNalmz/ElIatWEGHUvRTMl0tHx9LMpAkwI5OYXxs8mqXPHiciwn5DB0M7frcvPgM8jh2Xf7zmnPOs6CzQAgJ7OvNRnslK023YXIqNG9LyLOyv4pJsOINl7hj3EJPjfvlf/oRpTjc0f2Vi9rCZ2/ZhKw5wAHBLlLT/HHrw660gJatcJN3PK8ZLDaOkXI66kgtrae3l6b5xKvQVTwt+eWzuqaL0Aut32M9g+Sv6OTbzVUA8EvwA3ccX5XfSF9UEOaZutg8EcKC0kjOF1Qq3nY=
+  on:
+    tags: true
+    repo: alexpereira/wily
+    branch: release
