@@ -8,12 +8,10 @@ o---------COMMON # Authentication options
 o------------JWT JWT_SECRET=
 o---------COMMON 
 o---------COMMON # Database credentials
-o----------MYSQL DATABASE_HOST=
-o----------MYSQL DATABASE_PORT=
-o----------MYSQL DATABASE_NAME=
-o----------MYSQL DATABASE_USER=
-o----------MYSQL DATABASE_PASS=
-o----------MYSQL 
-o--------MONGODB 
-o--------MONGODB 
+o---------COMMON DATABASE_HOST=
+o---------COMMON DATABASE_PORT=
+o---------COMMON DATABASE_NAME=
+o---------COMMON DATABASE_USER=
+o---------COMMON DATABASE_PASS=
+o---------COMMON 
 `

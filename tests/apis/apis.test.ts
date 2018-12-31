@@ -44,12 +44,7 @@ describe('Testing API Combinations...', async () => {
     this.timeout(60000)
 
     // Change directory in context
-    try {
-      process.chdir('./tests/apis')
-    }
-    catch (error) {
-      console.error(`Changing directory in context error: ${error}`)
-    }
+    process.chdir(__dirname)
 
     // Install all npm packages
     try {

@@ -19,7 +19,7 @@ export const projectStack = [
     type: 'list',
     name: 'database',
     message: 'Database: ',
-    choices: ['mysql', /*'mongodb'*/],
+    choices: ['mysql', 'mongodb'],
     default: 'mysql'
   },
   {
@@ -30,14 +30,14 @@ export const projectStack = [
     default: 'knex',
     when: (answers: ProjectStack) => answers.database === 'mysql'
   },
-  /*{
+  {
     type: 'list',
     name: 'odm',
     message: 'ODM: ',
-    choices: ['mongoose', 'native-mongodb'],
+    choices: ['mongoose', /*'mongodb'*/],
     default: 'mongoose',
     when: (answers: ProjectStack) => answers.database === 'mongodb'
-  },*/
+  },
   {
     type: 'list',
     name: 'auth',
