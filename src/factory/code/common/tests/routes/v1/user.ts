@@ -5,7 +5,7 @@ o---------COMMON describe('Testing API...', function () {
 o---------COMMON   var server = {}
 o----------MOCHA   before(function () {
 o-----------JEST   beforeAll(function () {
-o---------COMMON     jest.setTimeout(30000)
+o-----------JEST     jest.setTimeout(30000)
 o---------COMMON     server = require('../../../server')
 o---------COMMON   })
 o---------COMMON 
