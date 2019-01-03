@@ -15,6 +15,7 @@ env:
     - DATABASE_NAME=wily
     - DATABASE_USER=wily
     - DATABASE_PASS=wily
+    - DEBUG=true
 before_script:
   - sleep 15
   - mongo mydb_test --eval 'db.createUser({user:"wily",pwd:"wily",roles:[{role:"root",db:"admin"}]});'
