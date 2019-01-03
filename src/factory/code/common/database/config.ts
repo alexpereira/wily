@@ -3,14 +3,14 @@ o-----------KNEX require('dotenv').config({ path: '../.env' })
 o------SEQUELIZE require('dotenv').config()
 o-------MONGOOSE require('dotenv').config()
 o-------MONGOOSE var mongoose = require('mongoose')
-o---------COMMON var { DATABASE_HOST, DATABASE_PORT, DATABASE_USER, DATABASE_PASS, DATABASE_NAME } = process.env
+o---------COMMON var { DATABASE_HOST, MYSQL_PORT, MONGO_PORT, DATABASE_USER, DATABASE_PASS, DATABASE_NAME } = process.env
 o---------COMMON 
 o-----------KNEX module.exports = {
 o-----------KNEX   development: {
 o-----------KNEX     client: 'mysql',
 o-----------KNEX     connection: {
 o-----------KNEX       host:     DATABASE_HOST,
-o-----------KNEX       port:     DATABASE_PORT,
+o-----------KNEX       port:     MYSQL_PORT,
 o-----------KNEX       database: DATABASE_NAME,
 o-----------KNEX       user:     DATABASE_USER,
 o-----------KNEX       password: DATABASE_PASS
@@ -21,7 +21,7 @@ o------SEQUELIZE module.exports = {
 o------SEQUELIZE   development: {
 o------SEQUELIZE     dialect: 'mysql',
 o------SEQUELIZE     host:     DATABASE_HOST,
-o------SEQUELIZE     port:     DATABASE_PORT,
+o------SEQUELIZE     port:     MYSQL_PORT,
 o------SEQUELIZE     database: DATABASE_NAME,
 o------SEQUELIZE     username: DATABASE_USER,
 o------SEQUELIZE     password: DATABASE_PASS
@@ -35,8 +35,7 @@ o-------MONGOOSE
 o-------MONGOOSE var { up: migrate, down: rollback } = require(\`./migrations/\${fileName}\`)
 o-------MONGOOSE var { up: seed } = require('./seeds/initial')
 o-------MONGOOSE 
-o-------MONGOOSE var { DATABASE_HOST, DATABASE_PORT, DATABASE_USER, DATABASE_PASS, DATABASE_NAME } = process.env
-o-------MONGOOSE var url = \`mongodb://\${DATABASE_USER}:\${DATABASE_PASS}@\${DATABASE_HOST}:\${DATABASE_PORT}/\${DATABASE_NAME}?authSource=admin\`
+o-------MONGOOSE var url = \`mongodb://\${DATABASE_USER}:\${DATABASE_PASS}@\${DATABASE_HOST}:\${MONGO_PORT}/\${DATABASE_NAME}?authSource=admin\`
 o-------MONGOOSE
 o-------MONGOOSE var actions = ['migrate', 'rollback', 'seed']
 o-------MONGOOSE var action = process.argv[2]

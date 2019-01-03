@@ -19,10 +19,13 @@ o------------JWT JWT_SECRET=teehee
 o------------JWT 
 o----------MYSQL # Database credentials
 o----------MYSQL DATABASE_HOST=localhost
-o----------MYSQL DATABASE_PORT=3306
 o----------MYSQL DATABASE_NAME=top_secret
 o----------MYSQL DATABASE_USER=admin
 o----------MYSQL DATABASE_PASS=password
+o---------COMMON 
+o----------MYSQL MYSQL_PORT=3306
+o--------MONGODB MONGO_PORT=27017
+o---------COMMON 
 o---------COMMON \`\`\`
 o---------COMMON 
 o---------COMMON ### Starting server
