@@ -34,7 +34,8 @@ o---------COMMON // Shutdown server gracefully
 o---------COMMON async function shutdown(options) {
 o---------COMMON   
 o---------COMMON   var actions = [
-o----------MYSQL     database.close || database.destroy,
+o----------MYSQL     database.close || database.destroy, // Handle mysql & mysql2
+o--------MONGODB     database.close,
 o--------EXPRESS     server.close,
 o-----------HAPI     app.stop,
 o---------COMMON   ]

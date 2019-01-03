@@ -1,13 +1,13 @@
 export = `
 o---------COMMON var UserModel = require('../models/user')
-o------SEQUELIZE var database = require('../utils/database')
 o---------COMMON var userValidation = require('../validation/user')
 o---------COMMON 
 o---------COMMON class UserController {
 o---------COMMON 
 o---------COMMON   constructor() {
 o-----------KNEX     this.userModel = new UserModel()
-o------SEQUELIZE     this.userModel = UserModel.init(database)
+o------SEQUELIZE     this.userModel = UserModel.init()
+o-------MONGOOSE     this.userModel = UserModel
 o---------COMMON 
 o---------COMMON     this.registerUser = this.registerUser.bind(this)
 o---------COMMON     this.loginUser = this.loginUser.bind(this)
