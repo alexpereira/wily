@@ -3,17 +3,21 @@ node_js:
   - node
 services:
   - mysql
+  - mongodb
 before_install:
   - mysql -u root --password="" < tests/travis.sql
 env:
   global:
     - JWT_SECRET=yolo
     - DATABASE_HOST=localhost
-    - DATABASE_PORT=3306
+    - MYSQL_PORT=3306
+    - MONGO_PORT=27017
     - DATABASE_NAME=wily
     - DATABASE_USER=wily
     - DATABASE_PASS=wily
 before_script:
+  - sleep 15
+  - mongo mydb_test --eval 'db.createUser({user:"wily",pwd:"wily",roles:["readWrite", "dbAdmin"]});'
   - npm install
   - npm run build
 script:

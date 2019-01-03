@@ -15,7 +15,7 @@ o-------MONGOOSE     "migrate": "./database/migrations/*_initial.js up",
 o-------MONGOOSE     "rollback": "./database/migrations/*_initial.js down",
 o-------MONGOOSE     "seed": "./database/seeds/initial.js up",
 o----------MOCHA     "test": "DEBUG=false node_modules/.bin/mocha tests --timeout 5000 --recursive",
-o-----------JEST     "test": "DEBUG=false node_modules/.bin/jest",
+o-----------JEST     "test": "DEBUG=false node_modules/.bin/jest  --env=node --forceExit",
 o---------COMMON     "meeseeks": "echo \\"I\'m Mr. Meeseeks! Look at me!\\""
 o---------COMMON   },
 o---------COMMON   "author": "",

@@ -9,9 +9,10 @@ o------------JWT JWT_SECRET=
 o---------COMMON 
 o---------COMMON # Database credentials
 o---------COMMON DATABASE_HOST=
-o---------COMMON DATABASE_PORT=
 o---------COMMON DATABASE_NAME=
 o---------COMMON DATABASE_USER=
 o---------COMMON DATABASE_PASS=
 o---------COMMON 
+o---------COMMON MYSQL_PORT=
+o---------COMMON MONGO_PORT=
 `
