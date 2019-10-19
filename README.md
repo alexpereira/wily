@@ -1,3 +1,7 @@
+# NO LONGER ACTIVE!
+
+## I am no longer working on this project. Do feel free to fork it though.
+
 # wily
 
 [![Build Status][travis-badge]][travis]
