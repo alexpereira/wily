@@ -1,6 +1,7 @@
 export = `
 o-----------KNEX exports.up = function(knex, Promise) {
 o------SEQUELIZE exports.up = function(queryInterface, Sequelize) {
+o-------MONGOOSE exports.up = function(connection) {
 o-----------KNEX   return Promise.all([
 o-----------KNEX     knex.schema.createTable('users', function (table) {
 o-----------KNEX       table.increments()
@@ -26,13 +27,16 @@ o------SEQUELIZE       defaultValue: Sequelize.literal('CURRENT_TIMESTAMP()')
 o------SEQUELIZE     },
 o------SEQUELIZE     updatedAt: Sequelize.DATE
 o------SEQUELIZE   })
+o-------MONGOOSE   return connection.model('users').init()
 o---------COMMON }
 o---------COMMON 
 o-----------KNEX exports.down = function(knex, Promise) {
 o------SEQUELIZE exports.down = function(queryInterface) {
+o-------MONGOOSE exports.down = function(connection) {
 o-----------KNEX   return Promise.all([
 o-----------KNEX     knex.schema.dropTable('users')
 o-----------KNEX   ])
 o------SEQUELIZE   return queryInterface.dropTable('users')
+o-------MONGOOSE   return connection.dropCollection('users')
 o---------COMMON }
 `

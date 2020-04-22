@@ -11,8 +11,11 @@ o-----------KNEX     "seed": "node_modules/.bin/knex seed:run --knexfile databas
 o------SEQUELIZE     "migrate": "node_modules/.bin/sequelize db:migrate --migrations-path database/migrations --config database/config.js",
 o------SEQUELIZE     "rollback": "node_modules/.bin/sequelize db:migrate:undo:all --migrations-path database/migrations --config database/config.js",
 o------SEQUELIZE     "seed": "node_modules/.bin/sequelize db:seed:all --seeders-path database/seeds --config database/config.js",
+o-------MONGOOSE     "migrate": "./database/migrations/*_initial.js up",
+o-------MONGOOSE     "rollback": "./database/migrations/*_initial.js down",
+o-------MONGOOSE     "seed": "./database/seeds/initial.js up",
 o----------MOCHA     "test": "DEBUG=false node_modules/.bin/mocha tests --timeout 5000 --recursive",
-o-----------JEST     "test": "DEBUG=false node_modules/.bin/jest",
+o-----------JEST     "test": "DEBUG=false node_modules/.bin/jest  --env=node --forceExit",
 o---------COMMON     "meeseeks": "echo \\"I\'m Mr. Meeseeks! Look at me!\\""
 o---------COMMON   },
 o---------COMMON   "author": "",

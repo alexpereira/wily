@@ -22,8 +22,8 @@ Once installed, a new API can be created by calling ```wily init```, like so:
 
 | API Architecture  | Framework | Database  | ORM | ODM | Authentication | Validation | Testing 
 | :-------------: | :-------------: | :-------------: | :-------------: | :-------------: | :-------------: | :-------------: | :-------------:
-| [REST](https://www.w3.org/2001/sw/wiki/REST)  | [Express](https://www.npmjs.com/package/express)  | [MySQL](https://www.npmjs.com/package/mysql) | [Knex.js](https://www.npmjs.com/package/knex) | ~~[Mongoose](https://www.npmjs.com/package/mongoose)~~ | [JWT](https://www.npmjs.com/package/jsonwebtoken) | [Joi](https://www.npmjs.com/package/joi) | [Mocha](https://www.npmjs.com/package/mocha)
-| ~~[GraphQL](https://graphql.org/)~~  | [hapi](https://www.npmjs.com/package/hapi) | ~~[MongoDB](https://www.npmjs.com/package/mongodb)~~  | [Sequelize](https://www.npmjs.com/package/sequelize) | ~~[MongoDB Driver](https://mongodb.github.io/node-mongodb-native)~~ | ~~[express-session](https://www.npmjs.com/package/express-session)~~ <br> ~~[yar (Hapi)](https://www.npmjs.com/package/yar)~~ | ~~[Validator](https://www.npmjs.com/package/validator)~~ | [Jest](https://www.npmjs.com/package/jest)
+| [REST](https://www.w3.org/2001/sw/wiki/REST)  | [Express](https://www.npmjs.com/package/express)  | [MySQL](https://www.npmjs.com/package/mysql) | [Knex.js](https://www.npmjs.com/package/knex) | [Mongoose](https://www.npmjs.com/package/mongoose) | [JWT](https://www.npmjs.com/package/jsonwebtoken) | [Joi](https://www.npmjs.com/package/joi) | [Mocha](https://www.npmjs.com/package/mocha)
+| ~~[GraphQL](https://graphql.org/)~~  | [hapi](https://www.npmjs.com/package/hapi) | [MongoDB](https://www.npmjs.com/package/mongodb)  | [Sequelize](https://www.npmjs.com/package/sequelize) | ~~[MongoDB Driver](https://mongodb.github.io/node-mongodb-native)~~ | ~~[express-session](https://www.npmjs.com/package/express-session)~~ <br> ~~[yar (Hapi)](https://www.npmjs.com/package/yar)~~ | ~~[Validator](https://www.npmjs.com/package/validator)~~ | [Jest](https://www.npmjs.com/package/jest)
 
 #### 📦 Built-in Packages
 

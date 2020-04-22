@@ -5,6 +5,7 @@ o---------COMMON describe('Testing API...', function () {
 o---------COMMON   var server = {}
 o----------MOCHA   before(function () {
 o-----------JEST   beforeAll(function () {
+o-----------JEST     jest.setTimeout(30000)
 o---------COMMON     server = require('../../../server')
 o---------COMMON   })
 o---------COMMON 
@@ -113,7 +114,8 @@ o---------COMMON   })
 o---------COMMON 
 o----------MOCHA   after(async function () {
 o-----------JEST   afterAll(async function () {
-o---------COMMON     await server.shutdown({ exit: true })
+o----------MOCHA     await server.shutdown({ exit: true })
+o-----------JEST     await server.shutdown({ cleanup: true })
 o---------COMMON   })
 o---------COMMON })
 o---------COMMON `
