@@ -20,7 +20,7 @@
     "mysql2": "^1.6.4",
     "sequelize": "^4.42.0",
     "supertest": "^3.3.0",
-    "validator": "^10.10.0",
+    "validator": "^13.7.0",
     "yar": "^9.1.0"
   },
   "devDependencies": {},
