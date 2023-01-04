@@ -9,7 +9,7 @@
     "express": "^4.16.4",
     "express-session": "^1.15.6",
     "hapi": "^17.8.1",
-    "jest": "^23.6.0",
+    "jest": "^29.3.1",
     "joi": "^14.3.0",
     "jsonwebtoken": "^8.4.0",
     "knex": "^0.15.2",
